@@ -1,9 +1,6 @@
 # KEEP UBUNTU OR DEBIAN UP TO DATE
 
 sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y dist-upgrade
-sudo apt-get -y autoremove
 
 
 # INSTALL THE DEPENDENCIES
@@ -36,17 +33,13 @@ sudo apt-get install -y doxygen
 # INSTALL THE LIBRARY (YOU CAN CHANGE '3.1.0' FOR THE LAST STABLE VERSION)
 
 sudo apt-get install -y unzip wget
-wget https://github.com/opencv/opencv/archive/3.1.0.zip
-unzip 3.1.0.zip
-rm 3.1.0.zip
-mv opencv-3.1.0 OpenCV
-cd OpenCV
+cd opencv_loft
 mkdir build
 cd build
-cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
-make -j4
-sudo make install
-sudo ldconfig
+cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules ..
+#make -j
+#sudo make install
+#sudo ldconfig
 
 
 # EXECUTE SOME OPENCV EXAMPLES AND COMPILE A DEMONSTRATION
